@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutMain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/speechToTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="85dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/micNotAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/speechToTextView"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/micNotAvailable"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:text="" />
+
+
+
+    <LinearLayout
+        android:id="@+id/InnerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+
+        <ImageButton
+            android:id="@+id/stopListening"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/startListening"
+            android:layout_weight=".15"
+            android:background="@drawable/rounded_corner_darkgrey"
+            android:onClick="stopListening"
+            android:src="@drawable/baseline_mic_off_black_18dp" />
+
+        <ImageButton
+            android:id="@+id/startListening"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight=".15"
+
+            android:background="@drawable/rounded_corner_darkgrey"
+            android:onClick="startListening"
+            android:src="@drawable/baseline_mic_black_18dp" />
+
+        <EditText
+            android:id="@+id/manuallyEnter"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight=".75"
+            android:background="@drawable/rounded_corner_darkgrey"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:text="" />
+
+        <Button
+            android:id="@+id/go"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight=".15"
+            android:background="@drawable/rounded_corner_darkgrey"
+            android:onClick="manuallyEnter"
+            android:text="GO" />
+
+    </LinearLayout>
+</RelativeLayout>
