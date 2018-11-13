@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "androidassistanthelper.jdubss.androidassistanthelper"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir{
+        dirs 'libs'
+    }
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+}
+
+ext {
+    roomVersion = '1.1.1'
+    archLifecycleVersion = '1.1.0'
+}
+
+dependencies {
+    def roomVersion = "1.1.1"
+    def archLifecycleVersion = '1.1.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:25.1.1' //this error comes from spotify auth
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //Spotify
+    api 'com.spotify.android:auth:1.0.0-alpha' //This is throwing the error
+    api 'com.spotify.sdk:spotify-player-24-noconnect-2.20b@aar'
+
+    //GSon
+    api 'com.google.code.gson:gson:2.2.+'
+
+    //Spring
+    api 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
+
+    //Room
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$roomVersion"
+    androidTestImplementation "android.arch.persistence.room:testing:$roomVersion"
+
+    // Lifecycle components
+    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+
+
+    //Dagger
+    implementation 'com.google.dagger:dagger-android:2.11'
+    implementation 'com.google.dagger:dagger-android-support:2.11' // if you use the support libraries
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+
+    //Google
+    api 'com.google.android.gms:play-services-auth:16.0.0'
+
+
+    //Api ai
+    api 'ai.api:sdk:2.0.7@aar'
+    api 'ai.api:libai:1.6.12'
+
+}
