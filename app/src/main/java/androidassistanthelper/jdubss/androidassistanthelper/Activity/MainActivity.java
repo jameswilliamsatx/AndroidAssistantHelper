@@ -227,8 +227,14 @@ public class MainActivity extends Activity implements AIListener,IExecutionTrans
     public void refreshSpotify(Boolean started) {
 
         if (!started) {
-            if ((getIntent().getExtras() == null)
-                    || !(Boolean) getIntent().getExtras().get(Constants.LOGGED_INTO_SPOTIFY)) {
+
+            Boolean extrasNull = getIntent().getExtras() == null;
+            Boolean loggedInSpotify = !extrasNull && getIntent().getExtras().get(Constants.LOGGED_INTO_SPOTIFY) != null &&
+                    (Boolean) getIntent().getExtras().get(Constants.LOGGED_INTO_SPOTIFY);
+
+
+
+            if (extrasNull || (!extrasNull && !loggedInSpotify)) {
                 Intent intent = new Intent(this, SpotifyRefreshTokenActivity.class);
                 startActivityForResult(intent, LOGGED_INTO_SPOTIFY_RESULT_CODE);
             }
